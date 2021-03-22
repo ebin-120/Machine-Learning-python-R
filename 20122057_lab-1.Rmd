@@ -1,0 +1,117 @@
+---
+title: "R Notebook"
+output:
+  html_notebook: default
+  pdf_document: default
+---
+
+ 
+Question 1 to 4
+```{r}
+D=1000
+K=5
+h=0.05
+P=2*D*K
+P# saved in a variable p
+l=P/h
+l
+Q=l^0.5# economic order quantity
+Q
+
+```
+
+Que 1 to 4 second 
+```{r}
+
+my_vec=1:10
+1+my_vec
+my_vec/2
+
+
+my_vec2=10:18
+
+my_vec+my_vec2
+
+```
+
+```{r}
+method1=seq(1,3,length=15)
+method2=(1:15)
+method3=c(1,2,3,4,5,6,7,8,9,0,22,222,3333,444)
+
+method1
+method2
+method3
+
+
+
+
+
+```
+ in method1 we used a fn called seq that takes three parameter , first two for range and third  its length or by: division
+ method2 is by using indexing it add  elements from a:b including starting and finishing  points.
+ method3 is more straightforward and basic way to create a sequence
+ 
+ 
+ 
+ 
+ 
+Q.Create a sequence of 15 numbers in all different ways and write a paragraph on the
+difference between each method. 
+```{r}
+gl(15,2,labels = c('a','a1','a2','a3','b','b1','b2','cv','cv2','d1','d2','d3','d4','d5','d6'))
+```
+ 
+Q.  Create a Data Frame with a minimum of 5 variables and generate data for 20 observations.
+The data frame should have at least a factor variable and a logical variable.
+ 
+```{r}
+ Name=c('P1','p2','p3','p4','p5','p6','p7','p8','p9','p10','p11','p12','p13','p14','p15','p16','p17','p18',"p19","p20")
+Id=c(33:52)
+
+  gender=gl(2,5,labels = c("Male","Female"))
+   Weight=round(seq(55,99,length=20),0)
+  Height=round(seq(148,170,length=20),0)
+  Age=round(seq(16,33,length=20),0)
+  You_are_a_student=c(T,F,T,F,T,T,F,T,T,F,T,F,T,T,T,F,F,F,T,F)
+
+dataf=data.frame(Name,Id,gender,Weight,Height,Age,You_are_a_student)
+dataf 
+```
+ Q.Write a R program to call the (built-in) dataset mtcars. 
+```{r}
+
+mtcars
+
+```
+ 
+ Q.Order the entire data frame by the first and second column.
+ 
+ 
+```{r}
+ordered_df=dataf[order(dataf$Name,dataf$Id),]
+
+ordered_df
+```
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
