@@ -1,0 +1,217 @@
+---
+title: "20122057"
+output: html_notebook
+---
+*Reading Data*
+
+
+```{r}
+library(ggplot2)
+library(MASS)
+df=Boston
+View( df)
+attach(df)
+summary(df)
+```
+
+*Correlation*
+```{r}
+
+cor(crim,medv)
+cor(zn,medv)
+cor(indus,medv)
+cor(chas,medv)
+cor(nox,medv)
+cor(rm,medv)
+cor(df$age,medv)
+cor(dis,medv)
+cor(rad,medv)
+cor(tax,medv)
+cor(ptratio,medv)
+cor(black,medv)
+cor(lstat,medv)
+cor(medv,medv)
+
+
+
+```
+lstat and rm has maximum correlation
+
+*PLOTTING*
+
+
+
+
+```{r}
+ggplot(df,aes(x=lstat,y=medv))+stat_smooth()+geom_point()
+```
+
+
+```{r}
+ggplot(df,aes(x=rm,y=medv))+stat_smooth()+geom_point()
+
+```
+*Model*
+model1
+```{r}
+model1=lm(medv~lstat,data = df)
+model1
+summary(model1)
+
+```
+Multiple R-squared:  0.5441, 54% of varaition is predicted
+
+```{r}
+ggplot(df,aes(x=lstat,y=medv))+stat_smooth()+geom_point()
+ggplot(df,aes(x=lstat,y=medv))+stat_smooth(method = lm)+geom_point(shape=23)
+
+
+```
+
+
+
+
+*model2*
+
+```{r}
+model2=lm(medv~rm,data = df)
+model2
+summary(model2)
+```
+
+
+Multiple R-squared:  0.4835 , nearly half of the varaiation is predicted
+
+
+```{r}
+ggplot(df,aes(x=rm,y=medv))+stat_smooth()+geom_point()
+ggplot(df,aes(x=rm,y=medv))+stat_smooth(method = lm)+geom_point(shape=23)
+
+
+```
+
+
+
+
+
+
+
+***INSURANCE DATASET***
+
+
+
+
+
+
+
+
+
+```{r}
+library(ggplot2)
+data=read.csv('D:/Notes/sem-2/R sem2/R by Akhil Sir/insurance.csv',header = T)
+View(data)
+summary(data)
+lapply(data,class)
+attach(data)
+```
+
+As we can see some of features are in character, we recode them to numeric if neede
+
+
+
+*Correlation*
+
+
+```{r}
+cor(charges,age)
+cor(bmi,charges)
+cor(children,charges)
+ggplot(data,aes(x=children,y=charges))+stat_smooth()+geom_point()
+ggplot(data,aes(x=bmi,y=charges))+stat_smooth()+geom_point()
+ggplot(data,aes(x=age,y=charges))+stat_smooth()+geom_point()
+```
+The available features in numeric type have very correlation with our target variable
+
+*Recoding Sex column*
+
+
+```{r}
+sex=ifelse(sex=="male",1,0)
+class(sex)
+```
+now our Sex column is numeric, checking correlation with target variable
+
+
+
+```{r}
+cor(sex,charges)
+ggplot(data,aes(x=sex,y=charges))+stat_smooth()+geom_point()
+```
+poor correlation
+
+*Recoding smoker col*
+
+
+
+
+
+```{r}
+
+smoker=ifelse(smoker=="yes",1,0)
+class(smoker
+      )
+
+
+cor(smoker,charges)
+ggplot(data,aes(x=smoker,y=charges))+stat_smooth()+geom_point(shape=33)
+```
+
+***Clearrly smoker column have a very good correlation with our Target Variable***
+About 0.8
+
+
+*Model Building*
+
+```{r}
+model=lm(charges~smoker,data = data)
+
+model
+summary(model)
+ggplot(data,aes(x=smoker,y=charges))+stat_smooth(method = lm)+geom_point()
+```
+
+Multiple R-Squared is giving 0.62 that is our model correctly predicted 68% of the variation of Y
+
+
+modelb
+
+
+```{r}
+
+
+modelB=lm(charges~bmi,data=data)
+modelB
+summary(modelB)
+```
+
+
+
+
+
+```{r}
+ggplot(data,aes(x=bmi,y=charges))+stat_smooth()+geom_point()
+ggplot(data,aes(x=bmi,y=charges))+stat_smooth(method = lm)+geom_point(shape=23)
+```
+
+
+only 3% of data is been predicted
+
+
+
+
+
+
+
+
+
+
