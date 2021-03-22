@@ -1,0 +1,184 @@
+---
+title: "LAB-3"
+output: html_notebook
+---
+
+1. What is the sum of the first 100 positive integers? The formula for the sum of
+integers 1 through n. n is n(n+1)/2n(n+1)/2.
+Define n=100n=100 and then use R to compute the sum of 11 through 100100 using the
+formula. What is the sum?
+```{r}
+n=100
+
+summation=n*(n+1)/2
+summation
+```
+2. Now use the same formula to compute the sum of the integers from 1 through 1,000.
+
+
+```{r}
+k=1000
+sum1000=k*(k+1)/2
+sum1000
+
+```
+3. Look at the result of typing the following code into R:
+n <- 1000
+x <- seq(1, n)
+sum(x)
+Based on the result, what do you think the functions seq and sum do? You can use help.
+a. sum creates a list of numbers and seq adds them up.
+b. seq creates a list of numbers and sum adds them up.
+c. seq creates a random list and sum computes the sum of 1 through 1,000.
+d. sum always returns the same number.
+
+
+```{r}
+n = 1000
+x= seq(1, n)
+sum(x)
+
+class(x)
+
+x # its not random
+
+
+```
+ANSWER:   seq creates a list of numbers and sum adds them up.
+
+4. In math and programming, we say that we evaluate a function when we replace the
+argument with a given number. So if we type sqrt(4), we evaluate the sqrt function. In R, you
+can evaluate a function inside another function. The evaluations happen from the inside out.
+Use one line of code to compute the log, in base 10, of the square root of 100.
+
+
+
+```{r}
+log10(sqrt(100))
+
+
+```
+
+5. Which of the following will always return the numeric value stored in x? You can try out
+examples and use the help system if you want.
+a. log(10^x)
+b. log10(x^10)
+c. log(exp(x))
+d. exp(log(x, base = 2))
+
+
+```{r}
+x=1
+log(10^x)
+log10(x^10)
+log(exp(x))
+exp(log(x, base = 2))
+
+
+```
+ANSWER: 
+c. log(exp(x))
+d. exp(log(x, base = 2))
+
+
+6. Load the US murders dataset.
+install.packages(“dslabs”)
+library(dslabs)
+data(murders)
+Use the function str to examine the structure of the murders object. Which of the following
+best describes the variables represented in this data frame?
+a. The 51 states.
+b. The murder rates for all 50 states and DC.
+c. The state name, the abbreviation of the state name, the state’s region, and the state’s
+population and total number of murders for 2010.
+
+d. str shows no relevant information.
+2. What are the column names used by the data frame for these five variables?
+3. Use the accessor $ to extract the state abbreviations and assign them to the object a. What is
+the class of this object?
+4. Now use the square brackets to extract the state abbreviations and assign them to the
+object b. Use the identical function to determine if a and b are the same.
+5. We saw that the region column stores a factor. You can corroborate this by typing:
+class(murders$region)
+With one line of code, use the function levels and length to determine the number of regions
+defined by this dataset.
+
+
+
+
+
+```{r}
+
+library(dslabs)
+data(murders)
+
+murders
+str(murders)
+
+
+#answer
+#c. The state name, the abbreviation of the state name, the state’s region, and the state’s
+#population and total number of murders for 2010.
+
+
+```
+
+
+6.2 What are the column names used by the data frame for these five variables?
+
+
+```{r}
+
+names(murders)
+```
+
+
+6.3. Use the accessor $ to extract the state abbreviations and assign them to the object a. What is
+the class of this object?
+
+
+```{r}
+
+a=murders$abb
+
+
+class(a)
+```
+
+
+6.4. Now use the square brackets to extract the state abbreviations and assign them to the
+object b. Use the identical function to determine if a and b are the same.
+
+```{r}
+
+b=murders[,2]
+b
+
+identical(a,b)
+```
+
+6.5. We saw that the region column stores a factor. You can corroborate this by typing:
+class(murders$region)
+With one line of code, use the function levels and length to determine the number of regions
+defined by this dataset.
+
+
+
+
+```{r}
+murders$region
+
+length(levels(murders$region))
+
+```
+
+
+
+
+
+
+
+
+
+
+
