@@ -1,0 +1,80 @@
+---
+title: "20122057_OLS_ASSUMPTION_PROOF"
+output: html_notebook
+---
+
+
+
+```{r}
+df= read.csv("D:/dwld/dat_df.csv",header = T)
+View(df)
+attach(df)
+model1=lm(df$X273~.,df)
+summary(model1)
+```
+
+```{r}
+plot(predict(model1),residuals(model1))
+mean(residuals(model1))
+
+```
+
+Diagonostic Plot for testing assumptions
+
+
+```{r}
+f=predict(model1)
+
+plot(model1)
+```
+
+A1. The linear regression model is “linear in parameters.” ( parameters are alpha and beta values)
+
+     From fig1(below) the red line near to the dense cluster is flat indicating linearity in parameters
+
+A2. There is a random sampling of observations.
+     
+     
+   
+
+A3. The residual mean should be zero
+    
+     In R file i showed mean of residuals is zero that is assumption A3 is also proved.
+
+
+ 
+
+
+
+A5. Spherical errors: There is homoscedasticity and no autocorrelation
+
+    The below figure  proves my A5 assumptions since error varies with constant variance with respect to variablesnjkkhyug
+
+A6: Optional Assumption: Error terms should be normally distributed
+
+
+    The above plot is a Q-Q- plot or Quantile - Quantile chart, X axis as theorectical X and Y axis as standardized residuals.
+
+    if standardized error is linear w.r.t my Theorectical value then we can say my residuals are normally distributed.
+
+    Therefore from the above figure i can prove my A6 assumption( linearity is shown by dotted black line).
+
+
+
+A4. There is no multi-collinearity (or perfect collinearity).
+
+```{r}
+cor(df)
+corrgram::corrgram(cor(df))
+```
+
+all the blue dots except the last column is showing collinearity between independent variables, thereisnt a serious problem or dark red box formation in correlation plot.
+we can go ahead with our assumption to be true.
+
+
+
+ALL OUR OLS ASSUMPTIONS ARE PROVED
+```{r}
+
+```
+
