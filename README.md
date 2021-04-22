@@ -8,6 +8,7 @@
      4.Lasso Regression.
      5.Elastic Regression.
 
-# SVM from scratch and the builded model performance.
+# Classification
+     1. SVM from scratch and the builded model performance.
 
 
